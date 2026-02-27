@@ -24,10 +24,6 @@ Bu proje, YOLOv8 nesne algılama modeli ile Re3 (Real-Time Recurrent Regression)
 
 \## 🛠️ Teknik Gereksinimler
 
-\* \*\*OS:\*\* Windows 11 Pro
-
-\* \*\*Hardware:\*\* Lenovo Gaming PC (NVIDIA GPU Hızlandırma)
-
 \* \*\*Library:\*\* `ultralytics`, `torch`, `opencv-python`, `numpy`
 
 
