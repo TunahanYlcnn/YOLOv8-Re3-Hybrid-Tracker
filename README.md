@@ -1,17 +1,56 @@
-# 🚀 YOLOv8 + Re3: Hibrit Nesne Takip ve Hata Düzeltme Sistemi
-Bu proje, YOLOv8 nesne algılama modeli ile Re3 (Real-Time Recurrent Regression) takipçisini entegre eden, hata payı minimize edilmiş bir takip sistemidir. Sistem, takipçinin nesneyi kaybetme ihtimaline karşı sürekli doğrulama (validation) yaparak kendini günceller.
+### Kodun Çalışma Mantığı:
+1.  **Sistem-Başlat-Ayarları:** İlk karede YOLOv8 nesneleri tespit eder.
+2.  **Takip-Döngüsü:** Her yeni karede Re3, nesnenin yeni konumunu tahmin eder.
+3.  **Hata-Düzeltme:** Eğer tahmin ve tespit arasında büyük bir fark varsa, sistem kendini YOLOv8 verisine göre günceller.
 
-## ✨ Öne Çıkan Özellikler
-Hibrit Mimari: YOLOv8'in kesin tespiti ile Re3'ün hızlı takibi birleştirilmiştir.
-Otomatik Hata Düzeltme: IoU ve Öklid mesafesi metrikleri kullanılarak takip kaybı algılanır ve sistem otomatik olarak yeniden başlatılır.
-Dinamik Kontrast İyileştirme: CLAHE algoritması ile zorlu ışık koşullarında takip kararlılığı artırılmıştır.
-Görsel Metrikler: IoU skoru ve merkez uzaklığı canlı olarak ekran üzerine yansıtılır.
+---
 
-## 🚀 Kurulum ve Kullanım
+## 📂 Dosya Yapısı
 
-1. Gerekli kütüphaneleri yükleyin:
+| Dosya / Klasör | Açıklama |
+| :--- | :--- |
+| `main.py` | Uygulamanın giriş noktası. |
+| `tracker.py` | Hibrit mantığın (YOLO + Re3) kurgulandığı ana sınıf. |
+| `models/` | YOLOv8 ağırlık dosyalarını (`.pt`) barındıran klasör. |
+| `utils/` | Koordinat dönüşümleri ve çizim araçları. |
 
+---
+
+# 🚀 YOLOv8 & Re3 Hybrid Tracker
+
+Bu proje, yüksek performanslı **YOLOv8** dedektörü ile dayanıklı **Re3 (Recurrent Residual Regression)** takip algoritmasını birleştiren hibrit bir nesne takip sistemidir. Özellikle nesnelerin birbirini kapattığı (occlusion) veya dedektörün nesneyi kaçırdığı anlarda, Re3'ün geçmiş karelerdeki veriyi hatırlama yeteneği sayesinde kesintisiz bir takip deneyimi sunar.
+
+---
+
+## 🛠 Teknik Mimari ve Özellikler
+*   **YOLOv8 Dedektörü:** Görüntüdeki nesnelerin konumlarını yüksek doğrulukla belirler.
+*   **Re3 Tracker:** RNN tabanlı yapısı sayesinde nesnenin sadece o anki görüntüsüne değil, önceki karelerdeki hareketine de odaklanır.
+*   **Hibrit Karar Mekanizması:** Dedektörden gelen veri ile tracker verisini birleştirerek, dedektörün nesneyi kaybettiği durumlarda tracker üzerinden devam eder.
+*   **Kalman Filtresi Entegrasyonu:** Hareket tahminini stabilize etmek ve ani sıçramaları engellemek için kullanılır.
+
+---
+
+## 📋 Gereksinimler
+
+Projenin çalışması için bilgisayarında Python yüklü olmalıdır. Gerekli kütüphaneler şunlardır:
+
+| Kütüphane | Kullanım Amacı |
+| :--- | :--- |
+| `ultralytics` | YOLOv8 modelini çalıştırmak için. |
+| `opencv-python` | Görüntü işleme ve görselleştirme için. |
+| `torch` & `torchvision` | Derin öğrenme modellerinin GPU/CPU üzerinde koşması için. |
+| `numpy` | Matris işlemleri ve koordinat hesaplamaları için. |
+
+---
+
+## ⚙️ Kurulum (Sıfırdan Başlangıç)
+
+1.  **Depoyu Klonla:**
 ```bash
-pip install ultralytics torch opencv-python numpy
+git clone [https://github.com/TunahanYlcnn/YOLOv8-Re3-Hybrid-Tracker.git](https://github.com/TunahanYlcnn/YOLOv8-Re3-Hybrid-Tracker.git)
+cd YOLOv8-Re3-Hybrid-Tracker
 ```
-
+2.  **Kütüphaneleri Yükle:**
+```bash
+pip install -r requirements.txt
+```
