@@ -39,5 +39,5 @@ cd YOLOv8-Re3-Hybrid-Tracker
 ```
 2.  **Kütüphaneleri Yükle:**
 ```bash
-pip install -r requirements.txt
+pip install ultralytics opencv-python torch torchvision numpy
 ```
