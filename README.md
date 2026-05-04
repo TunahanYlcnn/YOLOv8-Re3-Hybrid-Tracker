@@ -3,19 +3,6 @@
 2.  **Takip-Döngüsü:** Her yeni karede Re3, nesnenin yeni konumunu tahmin eder.
 3.  **Hata-Düzeltme:** Eğer tahmin ve tespit arasında büyük bir fark varsa, sistem kendini YOLOv8 verisine göre günceller.
 
----
-
-## 📂 Dosya Yapısı
-
-| Dosya / Klasör | Açıklama |
-| :--- | :--- |
-| `main.py` | Uygulamanın giriş noktası. |
-| `tracker.py` | Hibrit mantığın (YOLO + Re3) kurgulandığı ana sınıf. |
-| `models/` | YOLOv8 ağırlık dosyalarını (`.pt`) barındıran klasör. |
-| `utils/` | Koordinat dönüşümleri ve çizim araçları. |
-
----
-
 # 🚀 YOLOv8 & Re3 Hybrid Tracker
 
 Bu proje, yüksek performanslı **YOLOv8** dedektörü ile dayanıklı **Re3 (Recurrent Residual Regression)** takip algoritmasını birleştiren hibrit bir nesne takip sistemidir. Özellikle nesnelerin birbirini kapattığı (occlusion) veya dedektörün nesneyi kaçırdığı anlarda, Re3'ün geçmiş karelerdeki veriyi hatırlama yeteneği sayesinde kesintisiz bir takip deneyimi sunar.
