@@ -32,7 +32,7 @@ Bu proje, YOLOv8 nesne algılama modeli ile Re3 (Real-Time Recurrent Regression)
 
 1\. Gerekli kütüphaneleri yükleyin:
 
-&nbsp;  ```bash
-
-&nbsp;  pip install ultralytics torch opencv-python numpy
+```bash
+pip install ultralytics torch opencv-python numpy
+```
 
